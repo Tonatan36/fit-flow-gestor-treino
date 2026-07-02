@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlow | Gestor de Treino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Fit<span>Flow</span></h1>
+            <p>Seu progresso, sob controle.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="meus-treinos">
+            <div class="section-header">
+                <h2>Meus Treinos</h2>
+                <button id="btn-novo-treino" class="btn-primary">+ Novo Treino</button>
+            </div>
+            
+            <div id="lista-treinos" class="grid-treinos">
+                <!-- Cards de treino via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Adicionar Exercícios -->
+    <div id="modal-exercicios" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Escolher Exercício</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div id="lista-opcoes-exercicios" class="modal-body">
+                <!-- Exercícios do JS aparecem aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

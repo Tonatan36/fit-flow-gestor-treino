@@ -1,0 +1,52 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --primary: #00ff41;
+    --primary-hover: #00cc33;
+    --text: #ffffff;
+    --text-sec: #b3b3b3;
+    --danger: #ff4b2b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+
+body { background-color: var(--bg-color); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+.container { width: 90%; max-width: 1000px; margin: 0 auto; }
+
+header { background: linear-gradient(180deg, #1e1e1e 0%, #121212 100%); padding: 60px 0 40px; border-bottom: 1px solid #333; text-align: center; }
+
+header h1 { font-size: 2.5rem; }
+header h1 span { color: var(--primary); }
+
+.section-header { display: flex; justify-content: space-between; align-items: center; margin: 40px 0 20px; }
+
+.grid-treinos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding-bottom: 40px; }
+
+/* Botoes */
+.btn-primary { background-color: var(--primary); color: #000; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.btn-primary:hover { transform: translateY(-2px); background-color: var(--primary-hover); box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3); }
+
+/* Card Treino */
+.card-treino { background-color: var(--card-bg); padding: 25px; border-radius: 16px; border-left: 5px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.card-treino h3 { color: var(--primary); margin-bottom: 10px; }
+
+.lista-exercicios-card { list-style: none; margin: 15px 0; font-size: 0.9rem; color: var(--text-sec); }
+.lista-exercicios-card li { border-bottom: 1px solid #333; padding: 6px 0; display: flex; align-items: center; gap: 8px; }
+
+.card-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.btn-add-ex { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+.btn-add-ex:hover { background: var(--primary); color: #000; }
+.btn-delete { background: transparent; border: none; cursor: pointer; font-size: 1.2rem; }
+
+/* Modal */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
+.modal-content { background-color: var(--card-bg); margin: 5% auto; padding: 25px; width: 90%; max-width: 450px; border-radius: 20px; border: 1px solid #333; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px; }
+.close-modal { color: var(--text-sec); font-size: 30px; cursor: pointer; }
+
+.item-exercicio { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #333; cursor: pointer; border-radius: 8px; transition: 0.2s; }
+.item-exercicio:hover { background: rgba(0, 255, 65, 0.1); transform: scale(1.02); }
+.item-exercicio span { font-size: 0.75rem; background: #333; padding: 2px 8px; border-radius: 10px; color: var(--primary); }
+
+@media (max-width: 600px) { .section-header { flex-direction: column; gap: 15px; } }

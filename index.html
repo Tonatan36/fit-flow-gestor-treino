@@ -1,45 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FitFlow - organize seus treinos e acompanhe seus exercícios.">
+    <meta name="theme-color" content="#121212">
     <title>FitFlow | Gestor de Treino</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="container header-content">
             <h1>Fit<span>Flow</span></h1>
             <p>Seu progresso, sob controle.</p>
         </div>
     </header>
 
     <main class="container">
-        <section id="meus-treinos">
+        <section id="meus-treinos" aria-labelledby="titulo-treinos">
             <div class="section-header">
-                <h2>Meus Treinos</h2>
-                <button id="btn-novo-treino" class="btn-primary">+ Novo Treino</button>
+                <h2 id="titulo-treinos">Meus Treinos</h2>
+                <button id="btn-novo-treino" class="btn-primary" type="button">+ Novo Treino</button>
             </div>
-            
-            <div id="lista-treinos" class="grid-treinos">
-                <!-- Cards de treino via JS -->
-            </div>
+            <div id="lista-treinos" class="grid-treinos" aria-live="polite"></div>
         </section>
     </main>
 
-    <!-- Modal de Adicionar Exercícios -->
-    <div id="modal-exercicios" class="modal">
+    <dialog id="modal-novo-treino" class="modal" aria-labelledby="titulo-novo-treino">
+        <form id="form-novo-treino" class="modal-content" method="dialog">
+            <div class="modal-header">
+                <h2 id="titulo-novo-treino">Novo treino</h2>
+                <button class="close-modal" type="button" aria-label="Fechar formulário">&times;</button>
+            </div>
+            <label for="nome-treino">Nome do treino</label>
+            <input id="nome-treino" name="nome" type="text" maxlength="40" required autocomplete="off" placeholder="Ex: Treino A">
+            <p id="erro-nome-treino" class="form-error" role="alert"></p>
+            <div class="form-actions">
+                <button class="btn-secondary" type="button" data-close-dialog="modal-novo-treino">Cancelar</button>
+                <button class="btn-primary" type="submit">Criar treino</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="modal-exercicios" class="modal" aria-labelledby="titulo-exercicios">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Escolher Exercício</h2>
-                <span class="close-modal">&times;</span>
+                <h2 id="titulo-exercicios">Escolher Exercício</h2>
+                <button class="close-modal" type="button" aria-label="Fechar seleção de exercícios">&times;</button>
             </div>
-            <div id="lista-opcoes-exercicios" class="modal-body">
-                <!-- Exercícios do JS aparecem aqui -->
+            <div id="lista-opcoes-exercicios" class="modal-body"></div>
+        </div>
+    </dialog>
+
+    <dialog id="modal-confirmacao" class="modal" aria-labelledby="titulo-confirmacao">
+        <div class="modal-content confirm-content">
+            <h2 id="titulo-confirmacao">Excluir treino?</h2>
+            <p id="texto-confirmacao">Esta ação não pode ser desfeita.</p>
+            <div class="form-actions">
+                <button id="btn-cancelar-exclusao" class="btn-secondary" type="button">Cancelar</button>
+                <button id="btn-confirmar-exclusao" class="btn-danger" type="button">Excluir</button>
             </div>
         </div>
-    </div>
+    </dialog>
 
-    <script src="script.js"></script>
+    <dialog id="modal-execucao" class="modal" aria-labelledby="titulo-execucao">
+        <section class="modal-content execucao-content">
+            <div class="modal-header">
+                <div>
+                    <span class="execucao-etiqueta">Executando treino</span>
+                    <h2 id="titulo-execucao"></h2>
+                </div>
+                <button class="close-modal" type="button" aria-label="Fechar execução">&times;</button>
+            </div>
+            <div class="progresso-treino">
+                <span id="texto-progresso">0 de 0 exercícios concluídos</span>
+                <div class="barra-progresso" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="preenchimento-progresso"></div>
+                </div>
+            </div>
+            <div id="lista-execucao" class="lista-execucao"></div>
+            <div class="form-actions">
+                <button id="btn-parar-treino" class="btn-secondary" type="button">Parar treino</button>
+                <button id="btn-finalizar-treino" class="btn-primary" type="button">Finalizar treino</button>
+            </div>
+        </section>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
